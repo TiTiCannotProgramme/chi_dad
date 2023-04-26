@@ -97,7 +97,11 @@ if __name__ == "__main__":
         result_labels_2: List[str] = find_possible_labels(feature_dict, labels_positions_look_up_2)
         max_labels.append(result_labels)
         max_labels_2.append(result_labels_2)
-
+    flattened_labels = [item[0] for item in max_labels]
+    print(len(flattened_labels))
+    df["labels"] = flattened_labels
+    print(df.head())
+    df.to_stata("./data/labelled_data")
     # difference: int = 0
     # for i in range(len(max_labels)):
     #     if max_labels[i] != max_labels_2[i]:
